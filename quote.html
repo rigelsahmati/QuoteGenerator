@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Quote Of The Day</title>
+    <script src="https://kit.fontawesome.com/6781a33ba9.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Comfortaa:wght@500&family=Concert+One&family=Courgette&family=Martian+Mono&family=Prata&family=Space+Mono&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .div {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(62deg, #8EC5FC, #E0C3FC, #F3D39F, #7081D6);
+            background-size: 400%, 400%;
+            animation: animate 20s ease infinite;
+        }
+
+        .quotebox {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* border: 1px solid black;*/
+            border-radius: 10px;
+            width: 60vw;
+            height: fit-content;
+            background-color: white;
+            padding: 3vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes animate {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {}
+        }
+
+        h1 {
+            font-size: 2vw;
+        }
+
+        #quote {
+            margin: 3vw 0vw;
+            text-align: center;
+        }
+
+        #quote::after,
+        #quote::before {
+            content: '"';
+            font-size: 3vw;
+        }
+
+        #quote::before {
+            margin-right: 2vw;
+        }
+
+        #quote::after {
+            margin-left: 2vw;
+        }
+
+        .button {
+            width: 100%;
+            margin-top: 3vw;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .by {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        button, #search-btn{
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 1vw 2vw;
+            font-weight: 700;
+            background: #5853db;
+            background-size: 400%, 400%;
+            border-radius: 30px;
+            color: #ffffff;
+            font-size: 1.5vw;
+        }
+
+        #share {
+            margin-left: 2vw;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            width: fit-content;
+            width: 12vw;
+            position: relative;
+            border: 1px solid #5853db;
+            background: transparent;
+            color: #5853db;
+        }
+
+        button#share:hover {
+            width: 20vw;
+        }
+
+        .material-symbols-outlined {
+            margin-left: 1.5vw;
+        }
+
+        .social {
+            position: absolute;
+            left: 50%;
+            display: flex;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%);
+        }
+
+        .social>a {
+            text-decoration: none;
+            color: #5853db;
+        }
+
+        button#share:hover .social,
+        button#share:hover .background {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fa-brands,
+        .fab,.fa-regular{
+            margin: 0 2.5vw;
+        }
+
+        .background {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 30px;
+            background-color: #ffffff;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            color: #5853db;
+        }
+        .mobileonly{
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            position: absolute;
+            top: 0;
+            background-color: white;
+            border-radius: 10px;
+            transition: all 0.3s;
+            opacity: 0;
+           visibility: hidden;
+           display: none;
+        }
+        .medias{
+            position: absolute;
+            display: flex;
+        
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            align-items: center;
+        }
+        .medias>a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+        .cancelmobile{
+            position: absolute;
+            bottom: 5vw;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .byrigels{
+            position: fixed;
+            bottom: 2vw;
+            left: 50%;
+            z-index: 12;
+            transform: translateX(-50%);
+        }
+        .byrigels a{
+            text-decoration: none;
+            color: black;
+        }
+        .byrigels a:hover{
+            text-decoration: underline;
+        }
+        .settings{
+            display: flex;
+            width: 100%;
+            top: 2vw;
+            position: absolute;
+            left: 1vw;
+        }
+        #settings-btn{
+            position: relative;
+            transition: all cubic-bezier(0.41, 0.51, 0.52, 0.69)  0.3s;
+            
+        }
+        #settings-btn:hover{
+            background-color: #5b71e2;
+            transform: scale(1.1);
+        }
+        .settings-box{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30vw;
+            height: 100vh;
+            background-color: white;
+            z-index: 10;
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s;
+    left: -100%;
+        }
+        .exit{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding:2vw;
+        }
+        #exit-btn{
+            color: #5853db;
+            
+        }
+        .exit-box{
+            cursor: pointer;
+            width: 2vw;
+        }
+        .exit-box:hover #exit-btn{
+            animation: anime ease 0.5s;
+        }
+        @keyframes anime {
+            0%{
+                transform: translateX(0px);
+            }
+            50%{
+                transform: translateX(-20px);
+            }
+            100%{
+                transform: translateX(0px);
+            }
+            
+        }
+        input#inputbox{
+            border: 2px solid #5853db;
+            padding: 1vw 2vw;
+            border-radius: 15px;
+            outline: none;
+            margin-top: 3vw;
+            width: 20vw;
+        }
+        input#inputbox::placeholder{
+            color: black;
+        }
+        input#inputbox:active{
+            outline: none;
+        }
+        .p{
+            margin-top: 5vw;
+            font-size: 0.8vw;
+            padding: 0 2vw;
+        }
+        #search-btn{
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: 5vw;
+            transition: all 0.3s;
+        }
+        #search-btn:hover{
+            background-color: #5b71e2;
+        }
+        
+        #search-ico{
+            margin-left: 1vw;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        @media screen and (min-width: 100px) and (max-width:767px) {
+            .quotebox {
+                width: 90vw;
+                height: 60vh;
+                padding: 0vw 5vw;
+            }
+
+            h1 {
+                margin-top: 5vw;
+                font-size: 5vw;
+            }
+
+            .button {
+                position: absolute;
+                bottom: 5vw;
+
+            }
+
+            button {
+                font-size: 3vw;
+                padding: 3vw 5vw !important;
+            }
+
+            #share {
+                width: fit-content !important;
+                margin-left: 5vw;
+
+            }
+
+            .social,
+            .background {
+                display: none;
+            }
+
+            #quote {
+                font-size: 5vw;
+                position: absolute;
+                top: 40%;
+                transform: translateY(-40%);
+                width: 80vw;
+            }
+
+            #quote::after,
+            #quote::before {
+                font-size: 10vw;
+            }
+            .by {
+                
+                width: 100%;
+                position: absolute;
+                bottom: 25vw;
+                right: 5vw;
+            }
+            .fa-brands, .fab, .fa-regular{
+                margin: 0vw 10vw;
+            }
+            .mobileonly{
+                display: block;
+            }
+            .byrigels{
+                display: none;
+            }
+            .settings{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="div">
+        
+        <p class="byrigels">Made with ♡ by <a href="http://bit.ly/rigelsahmati" target="_blank">bit.ly/rigelsahmati</a></p>
+        
+
+        <div class="settings">
+            <button id="settings-btn" onclick="openSett()"><i class="fa-solid fa-magnifying-glass" ></i></button>
+        </div>
+
+        <div class="settings-box" id="settings-box">
+            <div class="exit">
+                <div class="exit-box" onclick="closeSett()">
+                    <i class="fa-solid fa-arrow-left fa-2xl" id="exit-btn"></i>
+                </div>
+                
+            </div>
+            <form onsubmit="return false;">
+                <input type="text" id="inputbox" placeholder="Search  For Quotes">
+                <p class="p">More options comming soon!!</p>
+               <button type="submit" id="search-btn" onclick="search()"> Search<i class="fa-solid fa-magnifying-glass" id="search-ico"></i></button>  
+            </form>
+            
+           
+        </div>
+
+
+        <div class="quotebox">
+            <div class="mobileonly" id="mobileonly">
+                <div class="medias">
+                    <a href="#">
+                        <i class="fa-brands fa-facebook-f fa-2xl" ></i>
+                    </a>
+                    
+                    <a href="#">
+                        <i class="fa-brands fa-twitter fa-2xl" ></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-regular fa-copy fa-2xl" ></i>
+                    </a>
+                </div>
+                <button id="new" onclick="cancel()" class="cancelmobile">Cancel</button>
+            </div>
+            <h1>Quote Of The Day</h1>
+            <p id="quote"> Loading..</p>
+            <div class="by">
+                <p id="author"></p>
+            </div>
+            <div class="button">
+                <button id="new" onclick="refresh()">New Quote</button>
+                <button id="share" onclick="openshare()">Share
+                    <span class="material-symbols-outlined">
+                        share
+                    </span>
+                    <div class="background"></div>
+                    <div class="social">
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        
+                        <a href="#">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" onclick="copy()">
+                            <i class="fa-regular fa-copy"></i>
+                        </a>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        const quote = document.getElementById("quote");
+        const author = document.getElementById("author");
+        const quote_link = "https://api.quotable.io/random";
+        var settingsbox = document.getElementById("settings-box");
+        var settingsboxwidht = document.getElementById("settings-box").offsetWidth;
+        var inputbox= document.getElementById("inputbox");
+        var quote_link2 = "";
+
+         async function quteapi(url) {
+            const response = await fetch(url);
+            var data = await response.json();
+            quote.innerHTML = data.content;
+            author.innerHTML = "By:" + "  " + data.author;
+            console.log(data)
+        }
+        quteapi(quote_link)
+
+        function openSett(){
+            settingsbox.style.left = 0;
+        }
+        function closeSett(){
+            settingsbox.style.left = "-"+ settingsboxwidht+"px";
+        }
+        var x ="testt"
+
+        function search(){
+            quote_link2 = "https://api.quotable.io/search/quotes?query="+inputbox.value;
+            inputbox.value = ""    
+            quteapi2(quote_link2)
+            closeSett()
+            setTimeout(2000)
+        }
+        async function quteapi2(quote_link2){
+            let x = quote.innerHTM;
+            const response = await fetch(quote_link2);
+            var data = await response.json();
+            quote.innerHTML = data.results[1].content;
+            author.innerHTML = "By:" + "  " + data.results[1].author;
+        }
+        function refresh() {
+            quote.innerHTML = "Loading..."
+            author.innerHTML = "Loading..."
+            quteapi(quote_link)
+        }
+        function openshare(){
+            document.getElementById("mobileonly").style.opacity = 1;
+            document.getElementById("mobileonly").style.visibility = "visible";
+        }
+        function cancel(){
+            document.getElementById("mobileonly").style.opacity = 0;
+            document.getElementById("mobileonly").style.visibility = "hidden";
+        }
+        function copy() {
+            var paragraph = document.getElementById("quote");
+            var tempTextarea = document.createElement("textarea");
+            tempTextarea.value = paragraph.innerHTML;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempTextarea);
+          }
+
+          const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '9f779432a8mshac0e322875fea12p1e7f1bjsnf9453aa627a2',
+                'X-RapidAPI-Host': 'trivia-by-api-ninjas.p.rapidapi.com'
+            }
+        };
+        
+        fetch('https://trivia-by-api-ninjas.p.rapidapi.com/v1/trivia', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            let tst = options.respons;
+            console.log(tst);
+        </script>
+</body>
+
+</html>
